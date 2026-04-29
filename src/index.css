@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/* =============================================================================
+   Gerador XML TISS 4.02.00 — Design System
+   Suporte a Tema Claro e Escuro via classe no <html>
+   ============================================================================= */
+
+@theme {
+  /* ── Cores fixas (usadas em ambos os temas) ── */
+  --color-teal-500: #14b8a6;
+  --color-teal-400: #2dd4bf;
+  --color-teal-300: #5eead4;
+
+  --color-cyan-500: #06b6d4;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-300: #67e8f9;
+
+  /* ── Status (fixos) ── */
+  --color-success: #34d399;
+  --color-error: #f87171;
+  --color-warning: #fbbf24;
+  --color-info: #60a5fa;
+
+  /* ── Tipografia ── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* ── Animações ── */
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-in-right: slide-in-right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  /* ── Cores de tema (navy para Tailwind classes) ── */
+  --color-navy-950: #040711;
+  --color-navy-900: #0a0f1e;
+  --color-navy-800: #0f172a;
+  --color-navy-700: #1a2340;
+  --color-navy-600: #253356;
+}
+
+/* =============================================================================
+   Tema Escuro (padrão) — Navy/Teal com glassmorphism
+   ============================================================================= */
+
+:root {
+  --surface-primary: #0d1221;
+  --surface-card: rgba(15, 23, 42, 0.6);
+  --surface-card-strong: rgba(15, 23, 42, 0.85);
+  --surface-input: rgba(15, 23, 42, 0.8);
+  --surface-hover: rgba(20, 184, 166, 0.08);
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --border-focus: rgba(20, 184, 166, 0.5);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #2dd4bf;
+  --shadow-glow: 0 0 20px rgba(20, 184, 166, 0.15);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-input: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --bg-body: #040711;
+  --mesh-1: rgba(20, 184, 166, 0.06);
+  --mesh-2: rgba(6, 182, 212, 0.06);
+  --mesh-3: rgba(20, 184, 166, 0.04);
+  --scrollbar-thumb: rgba(148, 163, 184, 0.2);
+  --scrollbar-hover: rgba(148, 163, 184, 0.35);
+  --select-bg: #0f172a;
+}
+
+/* =============================================================================
+   Tema Claro — Profissional cinza/branco com acentos teal
+   ============================================================================= */
+
+.light {
+  --surface-primary: #f8fafc;
+  --surface-card: rgba(255, 255, 255, 0.75);
+  --surface-card-strong: rgba(255, 255, 255, 0.92);
+  --surface-input: rgba(241, 245, 249, 0.9);
+  --surface-hover: rgba(20, 184, 166, 0.06);
+  --border-subtle: rgba(148, 163, 184, 0.22);
+  --border-focus: rgba(20, 184, 166, 0.6);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-accent: #0d9488;
+  --shadow-glow: 0 0 20px rgba(20, 184, 166, 0.1);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-input: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --bg-body: #f1f5f9;
+  --mesh-1: rgba(20, 184, 166, 0.04);
+  --mesh-2: rgba(6, 182, 212, 0.03);
+  --mesh-3: rgba(20, 184, 166, 0.02);
+  --scrollbar-thumb: rgba(148, 163, 184, 0.35);
+  --scrollbar-hover: rgba(148, 163, 184, 0.5);
+  --select-bg: #ffffff;
+}
+
+/* =============================================================================
+   Keyframes
+   ============================================================================= */
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(20, 184, 166, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes toast-enter {
+  from { opacity: 0; transform: translateX(100%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toast-exit {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(100%); }
+}
+
+/* =============================================================================
+   Base
+   ============================================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* =============================================================================
+   Glassmorphism (adapta ao tema)
+   ============================================================================= */
+
+.glass {
+  background: var(--surface-card);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-strong {
+  background: var(--surface-card-strong);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-input {
+  background: var(--surface-input);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  padding: 0.625rem 0.875rem;
+  width: 100%;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.glass-input::placeholder {
+  color: var(--text-muted);
+}
+
+.glass-input:hover {
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.glass-input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.12), var(--shadow-input);
+}
+
+.glass-input.error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12);
+}
+
+/* Select option backgrounds per tema */
+.glass-input option,
+select option {
+  background: var(--select-bg);
+  color: var(--text-primary);
+}
+
+/* =============================================================================
+   Scrollbar Customizado
+   ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+/* =============================================================================
+   Utilitários Customizados
+   ============================================================================= */
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-teal-400), var(--color-cyan-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-teal-500), var(--color-cyan-500));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.bg-mesh {
+  background-image:
+    radial-gradient(at 20% 20%, var(--mesh-1) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, var(--mesh-2) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, var(--mesh-3) 0px, transparent 60%);
+}
+
+/* =============================================================================
+   Cores semânticas como classes utilitárias (usadas nos componentes)
+   ============================================================================= */
+
+.text-text-primary { color: var(--text-primary); }
+.text-text-secondary { color: var(--text-secondary); }
+.text-text-muted { color: var(--text-muted); }
+.text-text-accent { color: var(--text-accent); }
+.bg-surface-primary { background-color: var(--surface-primary); }
+.bg-surface-card { background-color: var(--surface-card); }
+.bg-surface-input { background-color: var(--surface-input); }
+.bg-surface-hover { background-color: var(--surface-hover); }
+.border-border-subtle { border-color: var(--border-subtle); }
+.border-border-focus { border-color: var(--border-focus); }
+
+/* =============================================================================
+   Toast Notifications
+   ============================================================================= */
+
+.toast-enter {
+  animation: toast-enter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast-exit {
+  animation: toast-exit 0.2s ease-in forwards;
+}
